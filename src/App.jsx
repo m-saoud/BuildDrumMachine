@@ -3,6 +3,8 @@ import { useState, useRef } from "react";
 import "./App.css";
 function App() {
   const [display, setDisplay] = useState("");
+  const [power, setPower] = useState(true);
+
   const audioRefs = useRef({});
 
   const handleKeyPress = (e) => {
@@ -19,12 +21,31 @@ function App() {
     audio.play();
     setDisplay(audio.dataset.clipname);
   };
+
+  const togglePower = () => {
+    setPower(!power);
+    setDisplay("");
+  
+
+    
+
+
+  };
+
   return (
     <>
       <h1>Build a Drum Machine</h1>
 
       <div id="drum-machine" onKeyDown={handleKeyPress} tabIndex={0} autoFocus>
         <div id="display">{display}</div>
+
+        <button
+          className={`power-button ${power ? "on" : "off"}`}
+          onClick={togglePower}
+        >
+          {power ? "ON" : "OFF"}
+        </button>
+      
         <button className="drum-pad" id="Q" onClick={() => handlePadClick("Q")}>
           Q
           <audio
@@ -43,7 +64,6 @@ function App() {
             id="W"
             src="https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3"
             data-clipname="Heater 2"
-
             ref={(audio) => (audioRefs.current["W"] = audio)}
           ></audio>
         </button>
@@ -55,7 +75,6 @@ function App() {
             id="E"
             src="https://s3.amazonaws.com/freecodecamp/drums/Heater-3.mp3"
             data-clipname="Heater 3"
-
             ref={(audio) => (audioRefs.current["E"] = audio)}
           ></audio>
         </button>
@@ -67,7 +86,6 @@ function App() {
             id="A"
             src="https://s3.amazonaws.com/freecodecamp/drums/Heater-4_1.mp3"
             data-clipname="Heater 4"
-
             ref={(audio) => (audioRefs.current["A"] = audio)}
           ></audio>
         </button>
@@ -79,7 +97,6 @@ function App() {
             id="S"
             src="https://s3.amazonaws.com/freecodecamp/drums/Heater-6.mp3"
             data-clipname="Heater 5"
-
             ref={(audio) => (audioRefs.current["S"] = audio)}
           ></audio>
         </button>
@@ -91,7 +108,6 @@ function App() {
             id="D"
             src="https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3"
             data-clipname="OPEN HH"
-
             ref={(audio) => (audioRefs.current["D"] = audio)}
           ></audio>
         </button>
@@ -103,7 +119,6 @@ function App() {
             id="Z"
             src="https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3"
             data-clipname="Kick n Hat"
-
             ref={(audio) => (audioRefs.current["Z"] = audio)}
           ></audio>
         </button>
@@ -115,7 +130,6 @@ function App() {
             id="X"
             src="https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3"
             data-clipname="RP4 KICK 1"
-
             ref={(audio) => (audioRefs.current["X"] = audio)}
           ></audio>
         </button>
@@ -127,8 +141,6 @@ function App() {
             id="C"
             src="https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3"
             data-clipname="Cev H2"
-
-            
             ref={(audio) => (audioRefs.current["C"] = audio)}
           ></audio>
         </button>
