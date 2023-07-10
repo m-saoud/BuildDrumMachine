@@ -23,11 +23,16 @@ function App() {
   };
 
   const togglePower = () => {
+    if (!power) {
+      // Pause and reset audio
+      Object.values(audioRefs.current).forEach((audio) => {
+        audio.pause();
+        audio.currentTime = 0;
+      });
+    }
     setPower(!power);
     setDisplay("");
   
-
-    
 
 
   };
