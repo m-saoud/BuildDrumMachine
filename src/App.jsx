@@ -9,6 +9,7 @@ function App() {
     const drumPad = audioRefs.current[e.key.toUpperCase()];
     if (drumPad) {
       drumPad.play();
+      setDisplay(drumPad.dataset.clipname);
     }
   };
 
@@ -16,7 +17,7 @@ function App() {
     const audio = audioRefs.current[audioId];
     audio.currentTime = 0;
     audio.play();
-    setDisplay(audioId);
+    setDisplay(audio.dataset.clipname);
   };
   return (
     <>
@@ -30,6 +31,7 @@ function App() {
             className="clip"
             id="Q"
             src="https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3"
+            data-clipname="Heater 1"
             ref={(audio) => (audioRefs.current["Q"] = audio)}
           ></audio>
         </button>
@@ -40,6 +42,8 @@ function App() {
             className="clip"
             id="W"
             src="https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3"
+            data-clipname="Heater 2"
+
             ref={(audio) => (audioRefs.current["W"] = audio)}
           ></audio>
         </button>
@@ -50,6 +54,8 @@ function App() {
             className="clip"
             id="E"
             src="https://s3.amazonaws.com/freecodecamp/drums/Heater-3.mp3"
+            data-clipname="Heater 3"
+
             ref={(audio) => (audioRefs.current["E"] = audio)}
           ></audio>
         </button>
@@ -60,6 +66,8 @@ function App() {
             className="clip"
             id="A"
             src="https://s3.amazonaws.com/freecodecamp/drums/Heater-4_1.mp3"
+            data-clipname="Heater 4"
+
             ref={(audio) => (audioRefs.current["A"] = audio)}
           ></audio>
         </button>
@@ -70,6 +78,8 @@ function App() {
             className="clip"
             id="S"
             src="https://s3.amazonaws.com/freecodecamp/drums/Heater-6.mp3"
+            data-clipname="Heater 5"
+
             ref={(audio) => (audioRefs.current["S"] = audio)}
           ></audio>
         </button>
@@ -80,6 +90,8 @@ function App() {
             className="clip"
             id="D"
             src="https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3"
+            data-clipname="OPEN HH"
+
             ref={(audio) => (audioRefs.current["D"] = audio)}
           ></audio>
         </button>
@@ -90,6 +102,8 @@ function App() {
             className="clip"
             id="Z"
             src="https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3"
+            data-clipname="Kick n Hat"
+
             ref={(audio) => (audioRefs.current["Z"] = audio)}
           ></audio>
         </button>
@@ -100,6 +114,8 @@ function App() {
             className="clip"
             id="X"
             src="https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3"
+            data-clipname="RP4 KICK 1"
+
             ref={(audio) => (audioRefs.current["X"] = audio)}
           ></audio>
         </button>
@@ -110,6 +126,9 @@ function App() {
             className="clip"
             id="C"
             src="https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3"
+            data-clipname="Cev H2"
+
+            
             ref={(audio) => (audioRefs.current["C"] = audio)}
           ></audio>
         </button>
