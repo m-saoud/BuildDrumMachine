@@ -17,9 +17,9 @@ function App() {
     const key = e.key.toUpperCase();
   const button = document.getElementById(key);
   if (button) {
-    button.style.opacity = 0.5;
+    button.style.color = '#efef';
     setTimeout(() => {
-      button.style.opacity = 1;
+      button.style.color = '#000';
     }, 500);
   }
   };
