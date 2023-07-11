@@ -21,7 +21,14 @@ function App() {
       audio.currentTime = 0;
       audio.play();
       setDisplay(audio.dataset.clipname);
+      // Add keyboard display effect
+     const button = document.getElementById(audioId);
+     button.classList.add("pressed");
+     setTimeout(() => {
+       button.classList.remove("pressed");
+     }, 500);
     }
+     
   };
 
   const togglePower = () => {
@@ -53,7 +60,7 @@ function App() {
           {power ? "ON" : "OFF"}
         </button>
       
-        <button className="drum-pad" id="Q" onClick={() => handlePadClick("Q")}>
+        <button className="drum-pad"  id="Q" onClick={() => handlePadClick("Q")}>
           Q
           <audio
             className="clip"
