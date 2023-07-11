@@ -17,9 +17,11 @@ function App() {
 
   const handlePadClick = (audioId) => {
     const audio = audioRefs.current[audioId];
-    audio.currentTime = 0;
-    audio.play();
-    setDisplay(audio.dataset.clipname);
+    if (power) {
+      audio.currentTime = 0;
+      audio.play();
+      setDisplay(audio.dataset.clipname);
+    }
   };
 
   const togglePower = () => {
