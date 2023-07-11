@@ -81,3 +81,7 @@
 .drum-pad:hover {
   background-color: #ddd;
 }
+.pressed {
+  background-color: #f00;
+  color: #fff;
+}

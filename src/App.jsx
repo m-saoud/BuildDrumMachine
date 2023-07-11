@@ -12,7 +12,16 @@ function App() {
     if (drumPad) {
       drumPad.play();
       setDisplay(drumPad.dataset.clipname);
+      
     }
+    const key = e.key.toUpperCase();
+  const button = document.getElementById(key);
+  if (button) {
+    button.style.opacity = 0.5;
+    setTimeout(() => {
+      button.style.opacity = 1;
+    }, 500);
+  }
   };
 
   const handlePadClick = (audioId) => {
@@ -23,9 +32,9 @@ function App() {
       setDisplay(audio.dataset.clipname);
       // Add keyboard display effect
      const button = document.getElementById(audioId);
-     button.classList.add("pressed");
+     button.style.opacity = 0.5;
      setTimeout(() => {
-       button.classList.remove("pressed");
+       button.style.opacity = 1;
      }, 500);
     }
      
