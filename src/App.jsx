@@ -59,7 +59,7 @@ function App() {
     <>
       <h1>Build a Drum Machine</h1>
 
-      <div id="drum-machine" onKeyDown={handleKeyPress} tabIndex={0} autoFocus>
+      <div id="drum-machine" onKeyDown={handleKeyPress} tabIndex={0}>
         <div id="display">{display}</div>
 
         <button
