@@ -4,6 +4,8 @@ import "./App.css";
 function App() {
   const [display, setDisplay] = useState("");
   const [power, setPower] = useState(true);
+  const [volume, setVolume] = useState(0.5);
+
 
   const audioRefs = useRef({});
 
@@ -54,7 +56,10 @@ function App() {
 
 
   };
-
+  const handleVolumeChange = (event) => {
+    const volume = parseFloat(event.target.value);
+    setVolume(volume);
+  };
   return (
     <>
       <h1>Build a Drum Machine</h1>
@@ -68,6 +73,19 @@ function App() {
         >
           {power ? "ON" : "OFF"}
         </button>
+        <div className="volume-control">
+          <label htmlFor="volume">Volume:</label>
+          <input
+            type="range"
+            id="volume"
+            name="volume"
+            min="0"
+            max="1"
+            step="0.01"
+            value={volume}
+            onChange={handleVolumeChange}
+          />
+        </div>
       
         <button className="drum-pad"  id="Q" onClick={() => handlePadClick("Q")}>
           Q
