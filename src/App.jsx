@@ -4,13 +4,13 @@ import "./App.css";
 function App() {
   const [display, setDisplay] = useState("");
   const [power, setPower] = useState(true);
-  const [volume, setVolume] = useState(0.5);
+  const [volume, setVolume] = useState(50);
 
   const audioRefs = useRef({});
 
   const playAudio = (audio) => {
     audio.currentTime = 0;
-    audio.volume = volume;
+    audio.volume = volume / 100;
     audio.play();
     setDisplay(audio.dataset.clipname);
   };
@@ -34,7 +34,6 @@ function App() {
   };
 
   const handlePadClick = (audioId) => {
-    const audio = audioRefs.current[audioId];
     if (power) {
       const audio = audioRefs.current[audioId];
       playAudio(audio);
@@ -59,8 +58,9 @@ function App() {
     setDisplay("");
   };
   const handleVolumeChange = (event) => {
-    const volume = parseFloat(event.target.value);
-    setVolume(volume);
+    const volumeValue = parseInt(event.target.value);
+    setVolume(volumeValue);
+    setDisplay(`Volume: ${volumeValue}`);
   };
   return (
     <>
@@ -82,8 +82,8 @@ function App() {
             id="volume"
             name="volume"
             min="0"
-            max="1"
-            step="0.01"
+            max="100"
+            step="1"
             value={volume}
             onChange={handleVolumeChange}
           />
