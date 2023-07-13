@@ -6,40 +6,45 @@ function App() {
   const [power, setPower] = useState(true);
   const [volume, setVolume] = useState(0.5);
 
-
   const audioRefs = useRef({});
+
+  const playAudio = (audio) => {
+    audio.currentTime = 0;
+    audio.volume = volume;
+    audio.play();
+    setDisplay(audio.dataset.clipname);
+  };
 
   const handleKeyPress = (e) => {
     const drumPad = audioRefs.current[e.key.toUpperCase()];
     if (drumPad) {
-      drumPad.play();
-      setDisplay(drumPad.dataset.clipname);
-      
+      const audio = drumPad.querySelector("audio");
+      playAudio(audio);
+
+      playAudio(audio);
     }
     const key = e.key.toUpperCase();
-  const button = document.getElementById(key);
-  if (button) {
-    button.style.color = '#efef';
-    setTimeout(() => {
-      button.style.color = '#000';
-    }, 500);
-  }
+    const button = document.getElementById(key);
+    if (button) {
+      button.style.color = "#efef";
+      setTimeout(() => {
+        button.style.color = "#000";
+      }, 500);
+    }
   };
 
   const handlePadClick = (audioId) => {
     const audio = audioRefs.current[audioId];
     if (power) {
-      audio.currentTime = 0;
-      audio.play();
-      setDisplay(audio.dataset.clipname);
+      const audio = audioRefs.current[audioId];
+      playAudio(audio);
       // Add keyboard display effect
-     const button = document.getElementById(audioId);
-     button.style.opacity = 0.5;
-     setTimeout(() => {
-       button.style.opacity = 1;
-     }, 500);
+      const button = document.getElementById(audioId);
+      button.style.opacity = 0.5;
+      setTimeout(() => {
+        button.style.opacity = 1;
+      }, 500);
     }
-     
   };
 
   const togglePower = () => {
@@ -52,9 +57,6 @@ function App() {
     }
     setPower(!power);
     setDisplay("");
-  
-
-
   };
   const handleVolumeChange = (event) => {
     const volume = parseFloat(event.target.value);
@@ -86,8 +88,8 @@ function App() {
             onChange={handleVolumeChange}
           />
         </div>
-      
-        <button className="drum-pad"  id="Q" onClick={() => handlePadClick("Q")}>
+
+        <button className="drum-pad" id="Q" onClick={() => handlePadClick("Q")}>
           Q
           <audio
             className="clip"
