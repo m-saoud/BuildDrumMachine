@@ -99,7 +99,7 @@ function App() {
           <input
             type="range"
             id="volume"
-            name="volume"
+            className="volume"
             min="0"
             max="100"
             step="1"
