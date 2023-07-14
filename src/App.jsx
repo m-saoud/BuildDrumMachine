@@ -107,7 +107,7 @@ function App() {
             onChange={handleVolumeChange}
           />
         </div>
-
+        <div className="all_button">
         <button className="drum-pad" id="Q" onClick={() => handlePadClick("Q")}>
           Q
           <audio
@@ -206,6 +206,8 @@ function App() {
             ref={(audio) => (audioRefs.current["C"] = audio)}
           ></audio>
         </button>
+</div>
+        
       </div>
     </>
   );

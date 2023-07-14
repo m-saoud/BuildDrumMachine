@@ -3,6 +3,7 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  border: 2px solid;
 }
 
 .logo {
@@ -11,12 +12,7 @@
   will-change: filter;
   transition: filter 300ms;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
+
 
 @keyframes logo-spin {
   from {
@@ -55,33 +51,100 @@
 }
 
 #display{
-  background-color: #5150509d;
+  background-color: #7270707b;
   color: #fff;
   padding: 10px;
   text-align: center;
   font-size: 25px;
   margin-bottom: 20px;
-  border: 0.5px solid #2120209d;
 }
 
-.drum-pad {
-  display: inline-block;
-  width: 60px;
-  height: 60px;
-  background-color: #f0f0f0;
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  margin: 10px;
-  text-align: center;
-  font-size: 18px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
 
 .drum-pad:hover {
   background-color: #ddd;
 }
-.pressed {
-  background-color: #f00;
-  color: #fff;
+.title {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.display {
+  background-color: #fff;
+  padding: 10px;
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.power-button {
+  font-size: 18px;
+  padding: 8px 20px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.power-button.on {
+  background-color: #38f8084a;
+}
+
+.power-button.off {
+  background-color: #c818184e;
+}
+
+.volume-control {
+  display: inline-block;
+  align-items: center;
+  margin: 30px;
+}
+
+.volume-control label {
+  margin-right: 10px;
+  font-size:24px ;
+  font-weight: bold;
+}
+
+.drum-pad-container {
+  display: flex;
+  justify-content: center;
+}
+
+.drum-pad-row {
+  display: flex;
+}
+
+.drum-pad {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  margin: 5px;
+  background-color: #ccc;
+  color: #000;
+  font-size: 24px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.drum-pad.active {
+  background-color: #61dafb;
+}
+
+.clip {
+  display: none;
+}
+
+.all_button{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
