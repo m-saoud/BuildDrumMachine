@@ -22,6 +22,8 @@ function App() {
       const key = e.key.toUpperCase();
       const audio = audioRefs.current[key];
       if (audio) {
+        audio.volume = volume / 100;
+
         playAudio(audio);
         highlightButton(key);
       }
@@ -65,6 +67,10 @@ function App() {
     const volumeValue = parseInt(event.target.value);
     setVolume(volumeValue);
     setDisplay(`Volume: ${volumeValue}`);
+    // Update the volume for all audio elements
+    Object.values(audioRefs.current).forEach((audio) => {
+      audio.volume = volumeValue / 100
+    })
   };
 
   useEffect(() => {
