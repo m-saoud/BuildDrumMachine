@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 import "./App.css";
 function App() {
@@ -9,27 +9,22 @@ function App() {
   const audioRefs = useRef({});
 
   const playAudio = (audio) => {
-    audio.currentTime = 0;
-    audio.volume = volume / 100;
-    audio.play();
-    setDisplay(audio.dataset.clipname);
+    if (audio) {
+      audio.currentTime = 0;
+      audio.volume = volume / 100;
+      audio.play();
+      setDisplay(audio.dataset.clipname);
+    }
   };
 
   const handleKeyPress = (e) => {
-    const drumPad = audioRefs.current[e.key.toUpperCase()];
-    if (drumPad) {
-      const audio = drumPad.querySelector("audio");
-      playAudio(audio);
-
-      playAudio(audio);
-    }
-    const key = e.key.toUpperCase();
-    const button = document.getElementById(key);
-    if (button) {
-      button.style.color = "#efef";
-      setTimeout(() => {
-        button.style.color = "#000";
-      }, 500);
+    if (power) {
+      const key = e.key.toUpperCase();
+      const audio = audioRefs.current[key];
+      if (audio) {
+        playAudio(audio);
+        highlightButton(key);
+      }
     }
   };
 
@@ -57,16 +52,34 @@ function App() {
     setPower(!power);
     setDisplay("");
   };
+  const highlightButton = (key) => {
+    const button = document.getElementById(key);
+    if (button) {
+      button.style.color = "#efefef";
+      setTimeout(() => {
+        button.style.color = "#000";
+      }, 100);
+    }
+  };
   const handleVolumeChange = (event) => {
     const volumeValue = parseInt(event.target.value);
     setVolume(volumeValue);
     setDisplay(`Volume: ${volumeValue}`);
   };
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyPress);
+    return () => {
+      window.removeEventListener("keydown", handleKeyPress);
+    };
+  }, []); // Empty dependency array to run only once on component mount
+
+
   return (
     <>
       <h1>Build a Drum Machine</h1>
 
-      <div id="drum-machine" onKeyDown={handleKeyPress} tabIndex={0}>
+      <div id="drum-machine" onKeyDown={handleKeyPress}>
         <div id="display">{display}</div>
 
         <button
